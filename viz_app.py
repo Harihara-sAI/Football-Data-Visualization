@@ -63,7 +63,7 @@ m=match_ids[0]
 match=sb.events(match_id=m)
 
 match=match[['team','type','pass_type','location','pass_end_location','player','under_pressure','pass_outcome']].reset_index()
-match=match[(match['team']=='Borussia Dortmund') & (match['type']=='Pass') &(match['under_pressure']==True) ]
+match=match[(match['team']==opt2) & (match['type']=='Pass') &(match['under_pressure']==True) ]
 
 match[['x_start', 'y_start']]=pd.DataFrame(match.location.to_list(), index=match.index)
 match[['x_end', 'y_end']]=pd.DataFrame(match.pass_end_location.to_list(), index=match.index)
@@ -88,8 +88,8 @@ def make_pass_plot(pass_data):
     lc1=pitch.lines(s_x_start, s_y_start, s_x_end, s_y_end, lw=3, comet=True, color='green', ax=ax, label='Successful Passes',transparent=True)
     lc2=pitch.lines(us_x_start, us_y_start, us_x_end, us_y_end, lw=3, comet=True, color='red', ax=ax, label='Unsuccessful Passes',transparent=True)
     ax.legend(facecolor='white', edgecolor='black', fontsize=10, loc='upper left', handlelength=7)
-    ax.set_title('Borussia Dortmund: Passes made under Pressure v/s Augsburg, 2015/16', fontsize=18)
-    n='Borussia Dortmund Passes made under Pressure vs Augsburg'
+    ax.set_title(f"{opt2}: Passes made under Pressure, 2015/16", fontsize=18)
+    
     
 
 
@@ -127,8 +127,8 @@ def make_shot_plot(shot_data):
 
     ax.legend(facecolor='#4a4e69', edgecolor='white',labelcolor='white', fontsize=20, loc='lower left')
     ax.set_title('(Greater size refers to greater xG)', fontsize=10)
-    fig.suptitle('Borussia Dortmund: Shots attempted v/s Augsburg, 2015/16', fontsize=18)
-    n='Borussia Dortmund Shots vs Augsburg'
+    fig.suptitle(f"{opt2}: Shots attempted, 2015/16", fontsize=18)
+    
 
     return(fig)
 
