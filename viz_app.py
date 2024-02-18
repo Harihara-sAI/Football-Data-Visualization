@@ -39,7 +39,7 @@ def get_league(a):
 
 def get_teams(opt1):
     
-    get_league(opt1)
+    league=get_league(opt1)
     teams=league["home_team"].unique()
     return(teams)
 
