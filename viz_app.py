@@ -19,15 +19,25 @@ Bundesliga=get_league_data(9)
 La_Liga=get_league_data(11)
 Serie_A=get_league_data(12)
 
-leagues=["Premier_League", "La_Liga", "Bundesliga", "Serie_A", "Ligue_1"]
+leagues=["Premier League", "La Liga", "Bundesliga", "Serie A", "Ligue 1"]
 
-st.selectbox("Choose the League", options=leagues)
+opt1=st.selectbox("Choose the League", options=leagues)
 
-def get_teams(league):
+def get_teams(opt1):
+    if opt1=="Premier League":
+        league=Premier_League
+    if opt1=="La Liga":
+        league=La_Liga
+    if opt1=="Bundesliga":
+        league=Bundesliga
+    if opt1=="Ligue 1":
+        league=Ligue_1
+    if opt1=="Serie A":
+        league=Serie_A
     teams=league["home_team"].unique()
     return(teams)
 
-get_teams(Bundesliga)
+get_teams(opt1)
 
 def get_team_matches(league,team):
     away_matches=league[league["away_team"]==str(team)]
