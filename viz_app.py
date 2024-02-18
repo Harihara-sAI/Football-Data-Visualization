@@ -99,7 +99,7 @@ def make_pass_plot(pass_data):
 bor_dor_match=sb.events(match_id=m)
 bor_dor_match_shot_data=bor_dor_match[['team','type','shot_type','shot_technique','location','player','shot_outcome','shot_statsbomb_xg']].reset_index()
 
-shots=bor_dor_match_shot_data[(bor_dor_match_shot_data['team']=='Borussia Dortmund') & (bor_dor_match_shot_data['type']=='Shot') ]
+shots=bor_dor_match_shot_data[(bor_dor_match_shot_data['team']==opt2) & (bor_dor_match_shot_data['type']=='Shot') ]
 shots[['x_start', 'y_start']]=pd.DataFrame(shots.location.to_list(), index=shots.index)
 
 def make_shot_plot(shot_data):
