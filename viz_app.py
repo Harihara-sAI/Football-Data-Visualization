@@ -23,17 +23,23 @@ leagues=["Premier League", "La Liga", "Bundesliga", "Serie A", "Ligue 1"]
 
 opt1=st.selectbox("Choose the League", options=leagues)
 
-def get_teams(opt1):
-    if opt1=="Premier League":
+def get_league(a):
+    if a=="Premier League":
         league=Premier_League
-    if opt1=="La Liga":
+    if a=="La Liga":
         league=La_Liga
-    if opt1=="Bundesliga":
+    if a=="Bundesliga":
         league=Bundesliga
-    if opt1=="Ligue 1":
+    if a=="Ligue 1":
         league=Ligue_1
-    if opt1=="Serie A":
+    if a=="Serie A":
         league=Serie_A
+    return(league)
+
+
+def get_teams(opt1):
+    
+    get_league(opt1)
     teams=league["home_team"].unique()
     return(teams)
 
@@ -47,27 +53,27 @@ def get_team_matches(league,team):
     matches=pd.concat([home_matches,away_matches],ignore_index=True)
     return(matches)
 
-bvb_matches=get_team_matches(Bundesliga, "Borussia Dortmund")
+matches=get_team_matches(get_league(opt1), opt2)
 
-bvb_matches_list=bvb_matches[['match_id']]
-bvb_match_ids=bvb_matches_list['match_id'].to_list()
+matches_list=matches[['match_id']]
+match_ids=matches_list['match_id'].to_list()
 
-m=bvb_match_ids[0]
+m=match_ids[0]
 
-borussia_match=sb.events(match_id=m)
+match=sb.events(match_id=m)
 
-borussia_match=borussia_match[['team','type','pass_type','location','pass_end_location','player','under_pressure','pass_outcome']].reset_index()
-borussia_match=borussia_match[(borussia_match['team']=='Borussia Dortmund') & (borussia_match['type']=='Pass') &(borussia_match['under_pressure']==True) ]
+match=match[['team','type','pass_type','location','pass_end_location','player','under_pressure','pass_outcome']].reset_index()
+match=match[(match['team']=='Borussia Dortmund') & (match['type']=='Pass') &(match['under_pressure']==True) ]
 
-borussia_match[['x_start', 'y_start']]=pd.DataFrame(borussia_match.location.to_list(), index=borussia_match.index)
-borussia_match[['x_end', 'y_end']]=pd.DataFrame(borussia_match.pass_end_location.to_list(), index=borussia_match.index)
+match[['x_start', 'y_start']]=pd.DataFrame(match.location.to_list(), index=match.index)
+match[['x_end', 'y_end']]=pd.DataFrame(match.pass_end_location.to_list(), index=match.index)
 
 def make_pass_plot(pass_data):
     pitch=Pitch(pitch_type='statsbomb')
     fig, ax = pitch.draw(figsize=(15,8))
     success=pd.isnull(pass_data['pass_outcome'])
-    s_passes=borussia_match[success]
-    us_passes=borussia_match[~success]
+    s_passes=match[success]
+    us_passes=match[~success]
     s_x_start=s_passes['x_start'].to_list()
     s_x_end=s_passes['x_end'].to_list()
     s_y_start=s_passes['y_start'].to_list()
@@ -127,4 +133,4 @@ def make_shot_plot(shot_data):
     return(fig)
 
 st.pyplot(make_shot_plot(shots))
-st.pyplot(make_pass_plot(borussia_match))
+st.pyplot(make_pass_plot(match))
