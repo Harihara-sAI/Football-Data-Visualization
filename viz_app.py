@@ -102,7 +102,6 @@ def make_shot_plot(shot_data):
     ax.set_title('(Greater size refers to greater xG)', fontsize=10)
     fig.suptitle('Borussia Dortmund: Shots attempted v/s Augsburg, 2015/16', fontsize=18)
     n='Borussia Dortmund Shots vs Augsburg'
-    fig.savefig(f'{n}.png')
 
     return(fig)
 
