@@ -13,11 +13,21 @@ def get_league_data(i):
     league_matches=sb.matches(competition_id=str(i),season_id='27')
     return league_matches
 
-#premier_leagu_matches=get_league_data(2)
-#ligue_1=get_league_data(7)
-bundesliga=get_league_data(9)
-#la_liga=get_league_data(11)
-#serie_a=get_league_data(12)
+Premier_League=get_league_data(2)
+Ligue_1=get_league_data(7)
+Bundesliga=get_league_data(9)
+La_Liga=get_league_data(11)
+Serie_A=get_league_data(12)
+
+leagues=[Premier_League, La_Liga, Bundesliga, Serie_A, Ligue_1]
+
+st.selectbox("Choose the League", options=leagues)
+
+def get_teams(league):
+    teams=league["home_team"].unique()
+    return(teams)
+
+get_teams(Bundesliga)
 
 def get_team_matches(league,team):
     away_matches=league[league["away_team"]==str(team)]
@@ -25,7 +35,7 @@ def get_team_matches(league,team):
     matches=pd.concat([home_matches,away_matches],ignore_index=True)
     return(matches)
 
-bvb_matches=get_team_matches(bundesliga, "Borussia Dortmund")
+bvb_matches=get_team_matches(Bundesliga, "Borussia Dortmund")
 
 bvb_matches_list=bvb_matches[['match_id']]
 bvb_match_ids=bvb_matches_list['match_id'].to_list()
