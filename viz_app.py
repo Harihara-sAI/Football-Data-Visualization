@@ -19,7 +19,7 @@ Bundesliga=get_league_data(9)
 La_Liga=get_league_data(11)
 Serie_A=get_league_data(12)
 
-leagues=[Premier_League, La_Liga, Bundesliga, Serie_A, Ligue_1]
+leagues=["Premier_League", "La_Liga", "Bundesliga", "Serie_A", "Ligue_1"]
 
 st.selectbox("Choose the League", options=leagues)
 
