@@ -27,7 +27,6 @@ def get_team_matches(league,team):
 
 bvb_matches=get_team_matches(bundesliga, "Borussia Dortmund")
 
-bvb_matches.columns
 bvb_matches_list=bvb_matches[['match_id']]
 bvb_match_ids=bvb_matches_list['match_id'].to_list()
 
