@@ -104,6 +104,6 @@ def make_shot_plot(shot_data):
     n='Borussia Dortmund Shots vs Augsburg'
     fig.savefig(f'{n}.png')
 
-    return(fig.show)
+    return(fig)
 
 st.pyplot(make_shot_plot(shots))
