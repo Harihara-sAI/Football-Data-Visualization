@@ -5,7 +5,8 @@ from mplsoccer import VerticalPitch
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-st.title("ShreeRamaJayam")
+st.title("Top 5 Leagues Data Visualizations from 2015/16 season")
+st.text("This app uses Statsbomb's Open Data to make visualizations for particular teams")
 
 sb.competitions()
 
@@ -88,7 +89,7 @@ def make_pass_plot(pass_data):
     lc1=pitch.lines(s_x_start, s_y_start, s_x_end, s_y_end, lw=3, comet=True, color='green', ax=ax, label='Successful Passes',transparent=True)
     lc2=pitch.lines(us_x_start, us_y_start, us_x_end, us_y_end, lw=3, comet=True, color='red', ax=ax, label='Unsuccessful Passes',transparent=True)
     ax.legend(facecolor='white', edgecolor='black', fontsize=10, loc='upper left', handlelength=7)
-    ax.set_title(f"{opt2}: Passes made under Pressure, 2015/16", fontsize=18)
+    ax.set_title(f"{opt2}: Passes made under Pressure in the first match, 2015/16", fontsize=18)
     
     
 
@@ -127,7 +128,7 @@ def make_shot_plot(shot_data):
 
     ax.legend(facecolor='#4a4e69', edgecolor='white',labelcolor='white', fontsize=20, loc='lower left')
     ax.set_title('(Greater size refers to greater xG)', fontsize=10)
-    fig.suptitle(f"{opt2}: Shots attempted, 2015/16", fontsize=18)
+    fig.suptitle(f"{opt2}: Shots attempted in the first match, 2015/16", fontsize=18)
     
 
     return(fig)
