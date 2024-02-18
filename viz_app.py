@@ -62,11 +62,11 @@ def make_pass_plot(pass_data):
     ax.legend(facecolor='white', edgecolor='black', fontsize=10, loc='upper left', handlelength=7)
     ax.set_title('Borussia Dortmund: Passes made under Pressure v/s Augsburg, 2015/16', fontsize=18)
     n='Borussia Dortmund Passes made under Pressure vs Augsburg'
-    fig.savefig(f'{n}.png')
+    
 
 
 
-    return(fig.show)
+    return(fig)
 
 bor_dor_match=sb.events(match_id=m)
 bor_dor_match_shot_data=bor_dor_match[['team','type','shot_type','shot_technique','location','player','shot_outcome','shot_statsbomb_xg']].reset_index()
@@ -105,3 +105,4 @@ def make_shot_plot(shot_data):
     return(fig)
 
 st.pyplot(make_shot_plot(shots))
+st.pyplot(make_pass_plot(borussia_match))
