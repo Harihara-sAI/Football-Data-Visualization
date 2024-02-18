@@ -37,7 +37,9 @@ def get_teams(opt1):
     teams=league["home_team"].unique()
     return(teams)
 
-get_teams(opt1)
+team=get_teams(opt1)
+
+opt2=st.selectbox("Choose the Team", options=team)
 
 def get_team_matches(league,team):
     away_matches=league[league["away_team"]==str(team)]
