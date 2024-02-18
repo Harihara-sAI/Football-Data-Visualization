@@ -5,7 +5,7 @@ from mplsoccer import VerticalPitch
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-st.title("Top 5 Leagues Data Visualizations from 2015/16 season")
+st.title("Top 5 Leagues Data Visualizations from 2015/16 season - Hariharasai Mohan")
 st.text("This app uses Statsbomb's Open Data to make visualizations for particular teams")
 
 sb.competitions()
