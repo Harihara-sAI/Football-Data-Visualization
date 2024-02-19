@@ -130,7 +130,7 @@ def make_shot_plot(shot_data):
 
     lgn=ax.legend(facecolor='#4a4e69', edgecolor='white',labelcolor='white', fontsize=20, loc='lower left')
     for handle in lgn.legend_handles:
-        handle.set_sizes([30.0])
+        handle.set_sizes([100.0])
     ax.set_title('(Greater size refers to greater xG)', fontsize=10)
     fig.suptitle(f"{opt2}: Shots attempted in the first match, 2015/16", fontsize=18)
     
