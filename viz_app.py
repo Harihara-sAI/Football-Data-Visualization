@@ -50,7 +50,9 @@ opt2=st.selectbox("Choose the Team", options=team)
 
 def get_team_matches(league,team):
     away_matches=league[league["away_team"]==str(team)]
+    away_matches[['Opponent Name']]=pd.DataFrame(away_matches.home_team.to_list(), index=away_matches.index)
     home_matches=league[league["home_team"]==str(team)]
+    home_matches[['Opponent Name']]=pd.DataFrame(home_matches.away_team.to_list(), index=home_matches.index)
     matches=pd.concat([home_matches,away_matches],ignore_index=True)
     return(matches)
 
