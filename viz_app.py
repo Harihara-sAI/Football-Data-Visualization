@@ -14,11 +14,11 @@ def get_league_data(i):
     league_matches=sb.matches(competition_id=str(i),season_id='27')
     return league_matches
 
-Premier_League=get_league_data(2)
-Ligue_1=get_league_data(7)
-Bundesliga=get_league_data(9)
-La_Liga=get_league_data(11)
-Serie_A=get_league_data(12)
+#Premier_League=get_league_data(2)
+#Ligue_1=get_league_data(7)
+#Bundesliga=get_league_data(9)
+#La_Liga=get_league_data(11)
+#Serie_A=get_league_data(12)
 
 leagues=["Premier League", "La Liga", "Bundesliga", "Serie A", "Ligue 1"]
 
@@ -26,15 +26,15 @@ opt1=st.selectbox("Choose the League", options=leagues)
 
 def get_league(a):
     if a=="Premier League":
-        league=Premier_League
+        league=get_league_data(2)
     if a=="La Liga":
-        league=La_Liga
+        league=get_league_data(11)
     if a=="Bundesliga":
-        league=Bundesliga
+        league=get_league_data(9)
     if a=="Ligue 1":
-        league=Ligue_1
+        league=get_league_data(7)
     if a=="Serie A":
-        league=Serie_A
+        league=get_league_data(12)
     return(league)
 
 
