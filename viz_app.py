@@ -93,10 +93,6 @@ def make_pass_plot(pass_data):
     lgn=ax.legend(facecolor='white', edgecolor='black', fontsize=10, loc='upper left', handlelength=7)
     ax.set_title(f"{opt2}: Passes made under Pressure in the first match, 2015/16", fontsize=18)
     
-    
-
-
-
     return(fig)
 
 bor_dor_match=sb.events(match_id=m)
@@ -134,7 +130,6 @@ def make_shot_plot(shot_data):
     ax.set_title('(Greater size refers to greater xG)', fontsize=10)
     fig.suptitle(f"{opt2}: Shots attempted in the first match, 2015/16", fontsize=18)
     
-
     return(fig)
 
 st.pyplot(make_shot_plot(shots))
