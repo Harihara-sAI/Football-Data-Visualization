@@ -129,7 +129,7 @@ def make_shot_plot(shot_data):
     saved=pitch.scatter(Saved_shots['x_start'], Saved_shots['y_start'],s=((Saved_shots['shot_statsbomb_xg']*500)+100), marker='o',edgecolors='#000000',c='#264b96',ax=ax, label='Saved')
 
     lgn=ax.legend(facecolor='#4a4e69', edgecolor='white',labelcolor='white', fontsize=20, loc='lower left')
-    for handle in lgnd.legend_handles:
+    for handle in lgn.legend_handles:
         handle.set_sizes([6.0])
     ax.set_title('(Greater size refers to greater xG)', fontsize=10)
     fig.suptitle(f"{opt2}: Shots attempted in the first match, 2015/16", fontsize=18)
