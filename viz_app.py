@@ -74,7 +74,7 @@ for i in range(len(matches)):
 
 opt3=st.selectbox("Choose the Match", options=match_list)
 
-m=match_ids[matches.index(opt3)]
+m=match_ids[match_list.index(opt3)]
 
 match=sb.events(match_id=m)
 
