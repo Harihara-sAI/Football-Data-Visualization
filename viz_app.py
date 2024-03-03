@@ -55,11 +55,7 @@ opt2=st.selectbox("Choose the Team", options=team)
 
 
 def get_team_matches(league,team):
-    away_matches=league[league["away_team"]==str(team)]
-    away_matches[['Opponent Name']]=pd.DataFrame(away_matches.home_team.to_list(), index=away_matches.index)
-    home_matches=league[league["home_team"]==str(team)]
-    home_matches[['Opponent Name']]=pd.DataFrame(home_matches.away_team.to_list(), index=home_matches.index)
-    matches=pd.concat([home_matches,away_matches],ignore_index=True)
+    matches=league[league["away_team"]==str(team) | league["home_team"]==str(team)]
     return(matches)
 
 matches=get_team_matches(get_league(opt1), opt2)
@@ -110,10 +106,10 @@ def make_pass_plot(pass_data):
     
     return(fig)
 
-bor_dor_match=sb.events(match_id=m)
-bor_dor_match_shot_data=bor_dor_match[['team','type','shot_type','shot_technique','location','player','shot_outcome','shot_statsbomb_xg']].reset_index()
+team_match=sb.events(match_id=m)
+team_match_shot_data=team_match[['team','type','shot_type','shot_technique','location','player','shot_outcome','shot_statsbomb_xg']].reset_index()
 
-shots=bor_dor_match_shot_data[(bor_dor_match_shot_data['team']==opt2) & (bor_dor_match_shot_data['type']=='Shot') ]
+shots=team_match_shot_data[(team_match_shot_data['team']==opt2) & (team_match_shot_data['type']=='Shot') ]
 shots[['x_start', 'y_start']]=pd.DataFrame(shots.location.to_list(), index=shots.index)
 
 
