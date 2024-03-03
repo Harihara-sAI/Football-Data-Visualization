@@ -125,10 +125,10 @@ def make_shot_plot(shot_data):
     open_play_shots=shot_data[~penalty]
     penalty_shots=shot_data[penalty]
     #['Wayward', 'Blocked', 'Off T', 'Goal', 'Saved']
+    Goals=shot_data[shot_data['shot_outcome']=='Goal']
     Wayward_shots=shot_data[shot_data['shot_outcome']=='Wayward']
     Blocked_shots=shot_data[shot_data['shot_outcome']=='Blocked']
     Off_T_shots=shot_data[shot_data['shot_outcome']=='Off T']
-    Goals=shot_data[shot_data['shot_outcome']=='Goal']
     Saved_shots=shot_data[shot_data['shot_outcome']=='Saved']
 
     goals=pitch.scatter(Goals['x_start'], Goals['y_start'],s=((Goals['shot_statsbomb_xg']*500)+100), marker='football',edgecolors='#000000',ax=ax, label='Goals')
