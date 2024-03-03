@@ -106,7 +106,7 @@ def make_pass_plot(pass_data):
     lc1=pitch.lines(s_x_start, s_y_start, s_x_end, s_y_end, lw=3, comet=True, color='green', ax=ax, label='Successful Passes',transparent=True)
     lc2=pitch.lines(us_x_start, us_y_start, us_x_end, us_y_end, lw=3, comet=True, color='red', ax=ax, label='Unsuccessful Passes',transparent=True)
     lgn=ax.legend(facecolor='white', edgecolor='black', fontsize=10, loc='upper left', handlelength=7)
-    ax.set_title(f"{opt2}: Passes made under Pressure in the first match, 2015/16", fontsize=18)
+    ax.set_title(f"{opt2}: Passes made under Pressure in {opt3}, 2015/16", fontsize=18)
     
     return(fig)
 
@@ -145,7 +145,7 @@ def make_shot_plot(shot_data):
     for handle in lgn.legend_handles:
         handle.set_sizes([100.0])
     ax.set_title('(Greater size refers to greater xG)', fontsize=10)
-    fig.suptitle(f"{opt2}: Shots attempted in the first match, 2015/16", fontsize=18)
+    fig.suptitle(f"{opt2}: Shots attempted in {opt3}, 2015/16", fontsize=18)
     
     return(fig)
 
