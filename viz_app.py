@@ -67,10 +67,14 @@ matches=get_team_matches(get_league(opt1), opt2)
 matches_list=matches[['match_id']]
 match_ids=matches_list['match_id'].to_list()
 
+match_list=[]
+for i in range(len(matches)):
+    a=f"{matches['home_team'][i]} versus {matches['away_team'][i]}"
+    match_list.append(a)
 
-opt3=st.selectbox("Choose the League", options=match_ids)
+opt3=st.selectbox("Choose the Match", options=match_list)
 
-m=opt3
+m=match_ids[matches.index(opt3)]
 
 match=sb.events(match_id=m)
 
