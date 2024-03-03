@@ -67,7 +67,10 @@ matches=get_team_matches(get_league(opt1), opt2)
 matches_list=matches[['match_id']]
 match_ids=matches_list['match_id'].to_list()
 
-m=match_ids[0]
+
+opt3=st.selectbox("Choose the League", options=match_ids)
+
+m=opt3
 
 match=sb.events(match_id=m)
 
