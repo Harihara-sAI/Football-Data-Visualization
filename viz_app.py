@@ -125,13 +125,12 @@ def make_shot_plot(shot_data):
     open_play_shots=shot_data[~penalty]
     penalty_shots=shot_data[penalty]
     #['Wayward', 'Blocked', 'Off T', 'Goal', 'Saved']
-    Goals=shot_data[shot_data['shot_outcome']=='Goal']
+    
     Wayward_shots=shot_data[shot_data['shot_outcome']=='Wayward']
     Blocked_shots=shot_data[shot_data['shot_outcome']=='Blocked']
     Off_T_shots=shot_data[shot_data['shot_outcome']=='Off T']
     Saved_shots=shot_data[shot_data['shot_outcome']=='Saved']
-
-    goals=pitch.scatter(Goals['x_start'], Goals['y_start'],s=((Goals['shot_statsbomb_xg']*500)+100), marker='football',edgecolors='#000000',ax=ax, label='Goals')
+    Goals=shot_data[shot_data['shot_outcome']=='Goal']
 
     wayward=pitch.scatter(Wayward_shots['x_start'], Wayward_shots['y_start'],s=((Wayward_shots['shot_statsbomb_xg']*500)+100), marker='^',edgecolors='#000000',c='#c70000',ax=ax, label='Wayward shots')
 
@@ -140,6 +139,8 @@ def make_shot_plot(shot_data):
     blocked=pitch.scatter(Blocked_shots['x_start'], Blocked_shots['y_start'],s=((Blocked_shots['shot_statsbomb_xg']*500)+100), marker='h',edgecolors='#000000',c='#f9a73e',ax=ax, label='Blocked')
 
     saved=pitch.scatter(Saved_shots['x_start'], Saved_shots['y_start'],s=((Saved_shots['shot_statsbomb_xg']*500)+100), marker='o',edgecolors='#000000',c='#264b96',ax=ax, label='Saved')
+
+    goals=pitch.scatter(Goals['x_start'], Goals['y_start'],s=((Goals['shot_statsbomb_xg']*500)+100), marker='football',edgecolors='#000000',ax=ax, label='Goals')
 
     lgn=ax.legend(facecolor='#4a4e69', edgecolor='white',labelcolor='white', fontsize=20, loc='lower left')
     for handle in lgn.legend_handles:
