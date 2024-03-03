@@ -10,6 +10,8 @@ st.text("This app uses Statsbomb's Open Data to make visualizations for particul
 
 sb.competitions()
 
+
+@st.cache
 def get_league_data(i):
     league_matches=sb.matches(competition_id=str(i),season_id='27')
     return league_matches
@@ -24,6 +26,8 @@ leagues=["Premier League", "La Liga", "Bundesliga", "Serie A", "Ligue 1"]
 
 opt1=st.selectbox("Choose the League", options=leagues)
 
+
+@st.cache
 def get_league(a):
     if a=="Premier League":
         league=get_league_data(2)
@@ -38,6 +42,7 @@ def get_league(a):
     return(league)
 
 
+@st.cache
 def get_teams(opt1):
     
     league=get_league(opt1)
@@ -48,6 +53,8 @@ team=get_teams(opt1)
 
 opt2=st.selectbox("Choose the Team", options=team)
 
+
+@st.cache
 def get_team_matches(league,team):
     away_matches=league[league["away_team"]==str(team)]
     away_matches[['Opponent Name']]=pd.DataFrame(away_matches.home_team.to_list(), index=away_matches.index)
@@ -71,6 +78,9 @@ match=match[(match['team']==opt2) & (match['type']=='Pass') &(match['under_press
 match[['x_start', 'y_start']]=pd.DataFrame(match.location.to_list(), index=match.index)
 match[['x_end', 'y_end']]=pd.DataFrame(match.pass_end_location.to_list(), index=match.index)
 
+
+
+@st.cache
 def make_pass_plot(pass_data):
     pitch=Pitch(pitch_type='statsbomb')
     fig, ax = pitch.draw(figsize=(15,8))
@@ -101,6 +111,9 @@ bor_dor_match_shot_data=bor_dor_match[['team','type','shot_type','shot_technique
 shots=bor_dor_match_shot_data[(bor_dor_match_shot_data['team']==opt2) & (bor_dor_match_shot_data['type']=='Shot') ]
 shots[['x_start', 'y_start']]=pd.DataFrame(shots.location.to_list(), index=shots.index)
 
+
+
+@st.cache
 def make_shot_plot(shot_data):
     pitch = VerticalPitch(pad_bottom=0.5,  half=True,  goal_type='box')
     fig , ax =pitch.draw(figsize=(15,8))
