@@ -27,7 +27,7 @@ leagues=["Premier League", "La Liga", "Bundesliga", "Serie A", "Ligue 1"]
 opt1=st.selectbox("Choose the League", options=leagues)
 
 
-
+@st.cache
 def get_league(a):
     if a=="Premier League":
         league=get_league_data(2)
@@ -53,7 +53,7 @@ team=get_teams(opt1)
 
 opt2=st.selectbox("Choose the Team", options=team)
 
-@st.cache
+
 def get_team_matches(league,team):
     away_matches=league[league["away_team"]==str(team)]
     away_matches[['Opponent Name']]=pd.DataFrame(away_matches.home_team.to_list(), index=away_matches.index)
