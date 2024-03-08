@@ -150,5 +150,9 @@ def make_shot_plot(shot_data):
     
     return(fig)
 
-st.pyplot(make_shot_plot(shots))
-st.pyplot(make_pass_plot(match))
+
+a=st.button("Plot", type="secondary")
+
+if a:
+    st.pyplot(make_shot_plot(shots))
+    st.pyplot(make_pass_plot(match))
