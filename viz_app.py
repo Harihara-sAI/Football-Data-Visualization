@@ -11,7 +11,7 @@ st.text("This app uses Statsbomb's Open Data to make visualizations for particul
 sb.competitions()
 
 
-@st.cache
+
 def get_league_data(i):
     league_matches=sb.matches(competition_id=str(i),season_id='27')
     return league_matches
@@ -53,7 +53,7 @@ team=get_teams(opt1)
 
 opt2=st.selectbox("Choose the Team", options=team)
 
-
+@st.cache
 def get_team_matches(league,team):
     away_matches=league[league["away_team"]==str(team)]
     away_matches[['Opponent Name']]=pd.DataFrame(away_matches.home_team.to_list(), index=away_matches.index)
