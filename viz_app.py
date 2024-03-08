@@ -11,7 +11,7 @@ st.text("This app uses Statsbomb's Open Data to make visualizations for particul
 sb.competitions()
 
 
-
+@st.cache
 def get_league_data(i):
     league_matches=sb.matches(competition_id=str(i),season_id='27')
     return league_matches
@@ -27,7 +27,7 @@ leagues=["Premier League", "La Liga", "Bundesliga", "Serie A", "Ligue 1"]
 opt1=st.selectbox("Choose the League", options=leagues)
 
 
-@st.cache
+
 def get_league(a):
     if a=="Premier League":
         league=get_league_data(2)
